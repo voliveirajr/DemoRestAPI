@@ -7,25 +7,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Student {
 
 	@Id
-	private Long id;
+	private String id;
 	private Integer registration;
 	private String name;
 
 	public Student() {
 	};
 
-	public Student(Long id, Integer registration, String name) {
+	public Student(String id, Integer registration, String name) {
 		super();
 		this.id = id;
 		this.registration = registration;
 		this.name = name;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

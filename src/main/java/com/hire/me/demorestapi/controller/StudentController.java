@@ -19,6 +19,11 @@ public class StudentController {
 
 	    @Autowired
 	    StudentRepository studentRepository;
+	    
+	    @RequestMapping(method=RequestMethod.GET)
+	    public Iterable<Student> student() {
+	        return studentRepository.findAll();
+	    }
 
 	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    public void create(@RequestBody Student student) {
@@ -36,7 +41,7 @@ public class StudentController {
 	    }
 
 	    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE) 
-	    public void delete(@PathVariable Long id) {
+	    public void delete(@PathVariable String id) {
 	    	Student st = new Student();
 	    	st.setId(id);
 	    	studentRepository.delete(st); 
