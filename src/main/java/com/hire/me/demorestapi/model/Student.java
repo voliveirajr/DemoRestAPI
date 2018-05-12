@@ -20,6 +20,11 @@ public class Student {
 		this.registration = registration;
 		this.name = name;
 	}
+	
+	public Student(String name) {
+		super();
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;
