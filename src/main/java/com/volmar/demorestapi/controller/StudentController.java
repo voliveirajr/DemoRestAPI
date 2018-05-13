@@ -1,6 +1,6 @@
 package com.volmar.demorestapi.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,13 +26,13 @@ public class StudentController {
 	    }
 
 	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public void create(@RequestBody Student student) {
-	        studentRepository.save(student);
+	    public Student create(@RequestBody Student student) {
+	        return studentRepository.save(student);
 	    }
 
-	    @RequestMapping(value = "/{id}")
-	    public List<Student> read(@PathVariable String name) {
-	        return studentRepository.findByName(name);
+	    @RequestMapping(method=RequestMethod.GET, value = "/{id}")
+	    public Optional<Student> read(@PathVariable String id) {
+	        return studentRepository.findById(id);
 	    }
 
 	    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)

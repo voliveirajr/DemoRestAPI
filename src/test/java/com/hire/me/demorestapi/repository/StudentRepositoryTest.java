@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -61,14 +61,12 @@ public class StudentRepositoryTest {
 	
 	@Test
 	@UsingDataSet(loadStrategy = LoadStrategyEnum.DELETE_ALL)
-	public void findByNameTest() {
-		for (int i = 0; i < 3; i++) {
-			studentRepository.save(new Student("name"+i));		
-		}
+	public void findById() {
 		studentRepository.save(new Student("volmar"));
-		List<Student> students = studentRepository.findByName("volmar");
-		assertEquals(1, students.size());
-		assertEquals("volmar", students.get(0).getName());
+		List<Student> students = studentRepository.findAll();
+		Optional<Student> st = studentRepository.findById(students.get(0).getId());
+		assertTrue(st.isPresent());
+		assertEquals("volmar", st.get().getName());
 	}
 
 }
