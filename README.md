@@ -1,6 +1,10 @@
 # Demo Rest API
 This is a Demo rest API using Spring Boot, MongoDB running in docker containers defined by docker-compose yml file.
 
+![](https://cdn-images-1.medium.com/max/1200/1*02NqqST-JKZCDAPg9mOBiQ.png)
+
+A full article is available on this [medium post.](https://medium.com/@volmar.oliveira.jr/a-restapi-using-spring-boot-mongodb-running-on-docker-containers-5e530b48f45e)
+
 ## Requirements
 - Java 8
 - Maven 3.3.9
