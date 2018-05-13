@@ -1,8 +1,9 @@
-package com.hire.me.demorestapi.repository;
+package com.volmar.demorestapi.repository;
 
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import com.hire.me.demorestapi.model.Student;
+
+import com.volmar.demorestapi.model.Student;
 
 public interface StudentRepository extends MongoRepository<Student, Long> {
 

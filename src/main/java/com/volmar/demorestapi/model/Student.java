@@ -1,4 +1,4 @@
-package com.hire.me.demorestapi.model;
+package com.volmar.demorestapi.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

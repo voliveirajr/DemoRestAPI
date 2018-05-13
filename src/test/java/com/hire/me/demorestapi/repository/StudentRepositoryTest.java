@@ -17,10 +17,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.hire.me.demorestapi.config.FakeMongo;
-import com.hire.me.demorestapi.model.Student;
 import com.lordofthejars.nosqlunit.annotation.UsingDataSet;
 import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
 import com.lordofthejars.nosqlunit.mongodb.MongoDbRule;
+import com.volmar.demorestapi.model.Student;
+import com.volmar.demorestapi.repository.StudentRepository;
 
 /**
  * Created by Anand_Rajneesh on 6/14/2017. TODO FIXME - Text based search

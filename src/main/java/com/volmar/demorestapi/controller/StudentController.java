@@ -1,4 +1,4 @@
-package com.hire.me.demorestapi.controller;
+package com.volmar.demorestapi.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hire.me.demorestapi.model.Student;
-import com.hire.me.demorestapi.repository.StudentRepository;
+import com.volmar.demorestapi.model.Student;
+import com.volmar.demorestapi.repository.StudentRepository;
 
 @RestController
 @RequestMapping("/student")
