@@ -1,49 +1,36 @@
 package com.volmar.demorestapi.controller;
 
-import java.util.Optional;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.volmar.demorestapi.model.Student;
-import com.volmar.demorestapi.repository.StudentRepository;
+import com.volmar.demorestapi.service.StudentService;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping(value = "/api/", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
 public class StudentController {
 
-	    @Autowired
-	    StudentRepository studentRepository;
-	    
-	    @RequestMapping(method=RequestMethod.GET)
-	    public Iterable<Student> student() {
-	        return studentRepository.findAll();
-	    }
+	@Autowired
+	@Qualifier("v1")
+	StudentService studentserviceV1;
 
-	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public Student create(@RequestBody Student student) {
-	        return studentRepository.save(student);
-	    }
+	@Autowired
+	@Qualifier("v2")
+	StudentService studentserviceV2;
 
-	    @RequestMapping(method=RequestMethod.GET, value = "/{id}")
-	    public Optional<Student> read(@PathVariable String id) {
-	        return studentRepository.findById(id);
-	    }
+	@RequestMapping(value = "/v1/student", method = RequestMethod.GET)
+	public Iterable<Student> studentV1() {
+		return studentserviceV1.findAll();
+	}
 
-	    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public void update(@RequestBody Student student) {
-	        studentRepository.save(student);
-	    }
-
-	    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE) 
-	    public void delete(@PathVariable String id) {
-	    	Student st = new Student();
-	    	st.setId(id);
-	    	studentRepository.delete(st); 
-	    }
+	@RequestMapping(value = "/v2/student", method = RequestMethod.GET)
+	public Iterable<Student> studentV2() {
+		return studentserviceV2.findAll();
+	}
+	
 }
