@@ -1,8 +1,8 @@
 package com.volmar.demorestapi.controller;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +16,13 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/v1/student", method = RequestMethod.GET)
-	public Iterable<User> studentV1() {
+	@GetMapping
+	public Iterable<User> getAllUsers() {
 		return userService.findAll();
 	}
-
+	
+	@GetMapping("/{id}")
+	public Resource<User> retrieveUser() {
+		userService.
+	}
 }
